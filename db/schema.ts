@@ -1,0 +1,6 @@
+import { sqliteTable, text, integer } from 'drizzle-orm/sqlite-core';
+export const items=sqliteTable('items',{id:text('id').primaryKey(),ref:text('ref').notNull().unique(),name:text('name').notNull(),type:text('type').notNull(),category:text('category').notNull(),supplier:text('supplier').notNull(),unit:text('unit').notNull(),location:text('location').notNull(),stock:integer('stock').notNull().default(0),threshold:integer('threshold').notNull().default(5)});
+export const movements=sqliteTable('movements',{id:text('id').primaryKey(),itemId:text('item_id').notNull().references(()=>items.id),kind:text('kind').notNull(),quantity:integer('quantity').notNull(),note:text('note').notNull(),created:text('created').notNull()});
+export const settings=sqliteTable('settings',{id:integer('id').primaryKey(),email:text('email').notNull(),salt:text('salt').notNull(),hash:text('hash').notNull(),name:text('name').notNull().default(''),address:text('address').notNull().default(''),logo:text('logo').notNull().default('')});
+export const sessions=sqliteTable('sessions',{id:text('id').primaryKey(),expires:integer('expires').notNull()});
+export const attempts=sqliteTable('attempts',{id:integer('id').primaryKey(),count:integer('count').notNull().default(0),until:integer('until').notNull().default(0)});
