@@ -168,3 +168,8 @@ body{font-family:Arial,Helvetica,sans-serif;background:#0a1323;color:#edf3ff;fon
 .account-bar .logout-button{background:#412735;border-color:#a45c70;color:#ffe5ea;font-weight:700;padding:10px 16px}
 .account-bar .logout-button:hover{background:#613044}
 @media(max-width:650px){.account-bar{gap:6px;justify-content:center}.account-bar>span{flex-basis:100%;font-size:12px}.account-bar>div{width:100%;justify-content:center;gap:8px}.account-bar .quiet{flex:1;max-width:200px}}
+.heading-logo{display:block;background:transparent;padding:0;border:0;width:100%;justify-self:center;border-radius:10px}
+.heading-logo:hover{background:#ffffff06}
+.is-store .top-actions .return-home span{display:inline;white-space:normal}
+.is-store .top-actions .return-home{min-height:44px;max-width:200px;line-height:1.4}
+@media(max-width:650px){.is-store .top-actions{flex-wrap:wrap;justify-content:center}.is-store .top-actions .return-home{font-size:12px;padding:8px 10px;max-width:170px}.is-store .topbar{justify-content:center}}
