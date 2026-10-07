@@ -1,26 +1,33 @@
 # MELECGEST
 
-Application française de gestion de matériel électrique. Hébergement Sites privé, base D1 partagée, interface responsive. Accueil avec cartes de présentation, écusson transparent et fond de magasin électrique intégré avec l’autorisation de l’utilisateur.
+Gestion du matériel électrique avec base Supabase partagée, accès équipe et administration, interface responsive et export PDF.
 
-## Utilisation
+## Accès
 
-- Ouvrir « Accès équipe » pour accéder au magasin. Les cartes Habitat, Tertiaire et Industriel ouvrent directement la catégorie correspondante. Le bouton Accueil permet de revenir à la présentation.
-- Créer les articles avec référence unique, désignation, type, catégorie, fournisseur, unité, emplacement et seuil d’alerte. Aucun catalogue de démonstration n’est injecté en production.
-- Sélectionner un type, une catégorie ou un fournisseur pour afficher les articles, les compteurs et l’historique. La recherche seule ne déclenche pas l’affichage. Effacer les filtres masque tout le contenu sous les filtres.
-- Enregistrer les entrées et les sorties ; les sorties excessives sont refusées, y compris lors de demandes simultanées. Le stock initial constitue une entrée.
-- La modification est immédiatement reflétée sur l’appareil qui l’enregistre. Les autres appareils consultent la base toutes les deux secondes. Les changements nécessitent une connexion.
-- Ouvrir Administration à la première utilisation pour choisir l’adresse e-mail et un code de huit caractères minimum. Cette adresse est un identifiant ; aucun e-mail de validation ou de récupération n’est envoyé. Le code est dérivé avec PBKDF2 et un sel aléatoire. Les sessions sont conservées dans des cookies HttpOnly, expirent au bout d’une heure et peuvent être verrouillées. Cinq échecs déclenchent une limitation d’une minute.
-- Enregistrer le nom, l’adresse et éventuellement un logo. Ces informations sont reprises dans le PDF de la sélection.
-- Le bouton Envoyer prépare un PDF et ouvre la messagerie, ou le partage natif de l’appareil s’il est disponible. La pièce jointe doit être ajoutée manuellement dans la messagerie classique. Aucun service d’envoi d’e-mail automatique n’est configuré.
+Application : https://arduino15650.github.io/melecgest/
 
-Le site est privé : son accès est contrôlé par Sites. L’administration est en plus protégée par l’adresse et le code. Les visiteurs autorisés peuvent modifier le stock. La modification de l’établissement et du code exige une session administrateur validée côté serveur.
+Chaque utilisateur crée son compte, confirme son adresse par e-mail puis associe une application Authenticator (TOTP). La double authentification est obligatoire pour les administrateurs et l’équipe. L’administrateur initial autorisé est aitelhadjmustapha@yahoo.fr. Les autres adresses sont autorisées dans Administration ; aucun rôle n’est déterminé par les métadonnées modifiables du profil.
 
-Les fabricants et distributeurs proposés sont une liste initiale extensible (Schneider Electric, Legrand, Hager, ABB, Siemens, Rexel, Sonepar, etc.), pas un annuaire mondial exhaustif. Un nouveau fournisseur, type ou catégorie peut être saisi lors de la création d’un article. Références de la liste : https://www.sonepar.fr/fr-fr et https://www.se.com/fr/fr/partners/distributors/.
+Le compte utilisateur et son Authenticator doivent être configurés par leur propriétaire. Le mot de passe n’est jamais partagé.
 
-## Développement
+## Stock et administration
 
-Installer les dépendances via le helper Sites ; `npm run dev -- --port 5187` lance l’aperçu. `npm run build` compile l’application et copie le manifeste et les migrations. `npm run db:generate` crée les migrations. Appliquer chaque nouvelle migration à la base locale suivant le README du starter ; Sites applique les migrations de production à la publication.
+Les références, compteurs et mouvements apparaissent uniquement après sélection d’un type, d’une catégorie ou d’un fournisseur. Le stock initial est une entrée ; chaque modification de stock passe par un mouvement atomique. Les autres appareils actualisent les données toutes les deux secondes. Les informations de l’établissement et le logo sont intégrés au PDF. Envoyer utilise le partage natif ou ouvre la messagerie avec ajout manuel du PDF ; aucun service d’envoi automatique n’est configuré.
 
-`node scripts/verify-stock.mjs` vérifie les opérations sur un aperçu local lancé sur le port 5187. Il crée uniquement des données de test locales et ne doit pas être exécuté contre la production.
+## Supabase
 
-L’historique affiché est limité aux 200 mouvements les plus récents du magasin. Les compteurs sont calculés sur l’intégralité des mouvements. Les exports reflètent les références sélectionnées, pas l’historique complet.
+Projet : bnpfeilsnupfodcggpro. Schéma initial : supabase/schema.sql (déjà appliqué, ne pas réexécuter sur les tables existantes). Toutes les tables ont des politiques RLS. L’accès au stock exige une adresse autorisée, une adresse confirmée, une session active et le niveau MFA aal2. L’ancienne API D1 est désactivée ; les anciennes données sont conservées comme sauvegarde.
+
+Dans Authentication / URL Configuration, définir Site URL à https://arduino15650.github.io/melecgest/ et autoriser cette URL ainsi que https://melecgest-magasin.espace-de-tr-8048.chatgpt.site/. Vérifier la confirmation des e-mails et le fournisseur TOTP. Les paramètres URL et le parcours d’authentification réel doivent être vérifiés dans le tableau de bord avant ouverture à l’équipe.
+
+Seule la clé publishable est dans le navigateur. Ne jamais y placer une clé secrète ou service_role.
+
+## Compilation et publication
+
+npm install
+npx tsc --noEmit
+node node_modules/vite/bin/vite.js build --config vite.pages.config.ts
+
+Recréer docs/.nojekyll après compilation et publier la branche main, dossier /docs, sur GitHub Pages. La version Sites utilise npm run build et le workflow du plugin Sites ; sa politique d’accès actuelle est conservée.
+
+L’historique affiche les 200 mouvements récents ; les compteurs portent sur tous les mouvements.

@@ -1,2 +1,2 @@
-import Store from './store';
-export default function Home() { return <Store/>; }
+import AuthShell from './auth-shell';
+export default function Home() { return <AuthShell/>; }
