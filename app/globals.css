@@ -55,3 +55,101 @@ body{font-family:Arial,Helvetica,sans-serif;background:#0a1323;color:#edf3ff;fon
 @media(prefers-reduced-motion:reduce){.welcome-domain{transition:none}}
 
 .account-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:10px 24px;background:#101c30;color:#aabbd4;border-bottom:1px solid #2b3c57;font-size:12px}.account-bar>div{display:flex;gap:8px}.account-bar .quiet{padding:8px 12px;min-height:40px}.auth-links{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:16px}.auth-links button{white-space:normal}.mfa-setup{text-align:center;color:#aabbd4;line-height:1.6}.mfa-setup img{width:220px;height:220px;max-width:100%;display:block;margin:16px auto;background:white;padding:10px;border-radius:12px}.mfa-setup code{display:block;overflow-wrap:anywhere;margin:10px}.factor-row{display:flex;gap:12px;justify-content:space-between;align-items:center;margin:14px 0;overflow-wrap:anywhere}.factor-row>span{min-width:0}.factor-row small{display:block;color:#9baec8}.admin-extra{display:block}.admin-extra h3{color:#e7edf8}.admin-extra form{margin-top:16px}@media(max-width:650px){.account-bar{padding:10px 14px;font-size:11px}.factor-row{flex-wrap:wrap}}
+/* Compact responsive layout: content determines height, words wrap naturally. */
+.account-bar{padding:6px clamp(12px,2vw,24px);gap:8px;min-height:44px}
+.account-bar .quiet{padding:6px 10px;min-height:36px}
+.is-store .topbar{height:auto;min-height:72px;padding:10px max(16px,calc((100vw - 1600px)/2));gap:12px;flex-wrap:wrap}
+.is-store .brand-crest{width:40px;height:48px}
+.is-store .brand{font-size:24px;gap:10px;min-width:0}
+.is-store .top-actions{gap:12px}
+.is-store main{max-width:1600px;width:100%;padding:16px clamp(12px,2vw,24px) 24px}
+.is-store .breadcrumb{margin-bottom:12px;gap:8px;line-height:1.5;flex-wrap:wrap}
+.is-store .heading{padding:16px 20px;margin-bottom:12px;gap:16px;flex-wrap:nowrap;align-items:center}
+.is-store .heading-identity{flex:1;display:grid;grid-template-columns:72px minmax(0,1fr);gap:16px;align-items:center}
+.is-store .heading-crest{width:72px;height:86px}
+.is-store .heading h1{font-size:clamp(24px,2.4vw,36px);line-height:1.2;letter-spacing:-.6px;text-wrap:balance;word-break:normal;overflow-wrap:normal;hyphens:none}
+.is-store .heading h1 span{display:inline;white-space:normal}
+.is-store .heading .eyebrow{margin-bottom:8px;line-height:1.5;letter-spacing:1.2px;flex-wrap:wrap}
+.is-store .heading p{margin-top:8px;max-width:75ch;line-height:1.5;text-wrap:pretty;word-break:normal;overflow-wrap:normal;hyphens:none}
+.is-store .heading>.primary{margin:0;min-height:44px;padding:12px 18px;flex-shrink:0}
+.is-store .filter-heading{padding:14px 16px 0;flex-wrap:wrap;gap:8px;align-items:center}
+.is-store .filter-heading small{max-width:none;line-height:1.5;text-wrap:pretty}
+.is-store .filters{padding:14px 16px 16px;gap:12px;grid-template-columns:repeat(4,minmax(0,1fr))}
+.is-store .filters label{gap:6px;font-size:13px}
+.is-store .filters input,.is-store .filters select{height:44px;padding-top:10px;padding-bottom:10px}
+.is-store .search-field svg{top:12px}
+.is-store .filter-bottom{padding:10px 16px}
+.is-store .stats{gap:12px;margin:12px 0}
+.is-store .stat{flex-direction:row;justify-content:center;text-align:left;padding:14px;gap:12px}
+.is-store .stat strong{margin-top:3px;font-size:30px}
+.is-store .result-toolbar{margin-bottom:12px;padding:8px 12px;gap:10px;flex-wrap:wrap}
+.is-store .inventory{gap:12px}
+.is-store .inventory .item-card{width:calc((100% - 24px)/3);padding:16px}
+.is-store .inventory.list .item-card{width:100%}
+.is-store .item-top{margin-bottom:12px}
+.is-store .item-title h3{overflow-wrap:normal;word-break:normal;hyphens:none;text-wrap:pretty}
+.is-store .item-title p{margin:6px 0 10px;line-height:1.5}
+.is-store .item-meta{margin-bottom:12px}
+.is-store .item-meta span{max-width:100%;word-break:normal;overflow-wrap:normal}
+.is-store .item-counters{padding:12px 0;margin-bottom:12px;flex-wrap:wrap;gap:10px}
+.welcome-page{max-width:1600px;width:100%;padding:12px clamp(12px,2vw,24px) 20px;gap:12px}
+.welcome-banner{gap:20px;padding:12px 20px}
+.welcome-crest{width:110px;height:126px}
+.welcome-brand>p{font-size:16px;line-height:1.4;text-wrap:balance}
+.welcome-actions{margin-top:8px;gap:8px}
+.welcome-intro,.welcome-domains{padding:14px 18px}
+.welcome-page h2{font-size:clamp(22px,2vw,28px);line-height:1.3;text-wrap:balance;word-break:normal;overflow-wrap:normal;hyphens:none}
+.welcome-intro p,.welcome-domain p{line-height:1.5;text-wrap:pretty;word-break:normal;overflow-wrap:normal;hyphens:none}
+.welcome-domains h2{margin-bottom:10px}
+.welcome-domain-grid{gap:10px}
+.welcome-domain{padding:12px;min-width:0}
+@media(max-width:1000px){
+ .is-store .heading{flex-wrap:wrap}
+ .is-store .heading-identity{flex-basis:100%}
+ .is-store .heading>.primary{margin-left:auto}
+ .is-store .filters{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .is-store .inventory .item-card{width:calc((100% - 12px)/2)}
+ .is-store .inventory.list .item-card{width:100%}
+}
+@media(max-width:650px){
+ .account-bar{justify-content:center;text-align:center}
+ .account-bar>div{flex-wrap:wrap;justify-content:center}
+ .is-store .topbar{min-height:64px;padding:8px 12px;gap:8px}
+ .is-store .brand{font-size:21px}
+ .is-store .brand-crest{width:34px;height:42px}
+ .is-store .brand small{font-size:7px;letter-spacing:1px;margin-top:4px}
+ .is-store .top-actions{gap:8px}
+ .is-store .topbar .quiet{min-width:44px;min-height:44px;padding:10px}
+ .is-store main{padding:12px 12px 20px}
+ .is-store .breadcrumb{margin-bottom:10px}
+ .is-store .heading{padding:14px;gap:12px;align-items:center;border-radius:14px}
+ .is-store .heading-identity{grid-template-columns:56px minmax(0,1fr);gap:10px;text-align:center;flex-direction:row}
+ .is-store .heading-crest{width:56px;height:68px}
+ .is-store .heading .eyebrow{justify-content:center;font-size:8px;letter-spacing:.6px;margin-bottom:6px}
+ .is-store .heading h1{font-size:clamp(22px,5.5vw,28px)}
+ .is-store .heading p{font-size:13px;margin:6px auto 0;max-width:none;line-height:1.5}
+ .is-store .heading>.primary{width:100%;margin:0;padding:11px 14px}
+ .is-store .filter-heading{align-items:center;text-align:center;justify-content:center;padding:12px 14px 0}
+ .is-store .filter-heading small{text-align:center;font-size:12px}
+ .is-store .filters{padding:12px 14px 14px;gap:12px}
+ .is-store .stats{gap:10px}
+ .is-store .stat{padding:12px 10px;gap:8px}
+ .is-store .stat small{font-size:11px}
+ .is-store .stat strong{font-size:26px}
+ .is-store .stat-icon{padding:7px}
+ .is-store .inventory .item-card{width:100%}
+ .is-store .result-toolbar{justify-content:center}
+ .is-store .tabs{justify-content:center}
+ .is-store .export-actions{flex-wrap:wrap;justify-content:center}
+ .welcome-banner{grid-template-columns:68px minmax(0,1fr);padding:12px;gap:10px}
+ .welcome-crest{width:68px;height:88px}
+ .welcome-brand h1{font-size:clamp(21px,5vw,28px)}
+ .welcome-brand>p{font-size:13px}
+ .welcome-banner .welcome-actions{gap:6px;margin-top:8px}
+ .welcome-banner .welcome-button{font-size:13px;white-space:normal;min-height:44px}
+ .welcome-intro,.welcome-domains{padding:14px}
+ .welcome-domain{display:grid;grid-template-columns:32px minmax(0,1fr);align-items:center;padding:12px;gap:4px 10px;text-align:center}
+ .welcome-domain .welcome-emoji{grid-column:1;grid-row:1/3;margin:0}
+ .welcome-domain h3,.welcome-domain p{grid-column:2;margin:0;text-align:center}
+}
+@media(max-width:479px){.is-store .filters{grid-template-columns:1fr}.is-store .filter-heading small{flex-basis:100%}}
