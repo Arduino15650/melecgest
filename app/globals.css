@@ -154,9 +154,9 @@ body{font-family:Arial,Helvetica,sans-serif;background:#0a1323;color:#edf3ff;fon
 }
 @media(max-width:479px){.is-store .filters{grid-template-columns:1fr}.is-store .filter-heading small{flex-basis:100%}}
 /* Crest occupies the available identity area without stretching. */
-.is-store .heading-identity{grid-template-columns:clamp(100px,10vw,140px) minmax(0,1fr)}
+.is-store .heading-identity{grid-template-columns:clamp(112px,11.2vw,156px) minmax(0,1fr)}
 .is-store .heading-crest{width:100%;height:auto;aspect-ratio:130/154;justify-self:center;object-fit:contain}
 @media(max-width:650px){
- .is-store .heading-identity{grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:12px}
- .is-store .heading-crest{width:100%;max-width:150px;height:auto;aspect-ratio:130/154}
+ .is-store .heading-identity{grid-template-columns:minmax(0,3fr) minmax(0,5fr);gap:14px}
+ .is-store .heading-crest{width:100%;max-width:170px;height:auto;aspect-ratio:130/154}
 }
