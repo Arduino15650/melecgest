@@ -160,3 +160,11 @@ body{font-family:Arial,Helvetica,sans-serif;background:#0a1323;color:#edf3ff;fon
  .is-store .heading-identity{grid-template-columns:minmax(0,3fr) minmax(0,5fr);gap:14px}
  .is-store .heading-crest{width:100%;max-width:170px;height:auto;aspect-ratio:130/154}
 }
+/* Keep account controls above the application's isolated background. */
+.account-bar{position:sticky;top:0;z-index:25;isolation:isolate;background:#101c30;box-shadow:0 4px 16px #00000030;padding:8px clamp(12px,2vw,24px)}
+.account-bar>span{min-width:0;line-height:1.5;overflow-wrap:anywhere;flex:1}
+.account-bar>div{flex-shrink:0;flex-wrap:wrap}
+.account-bar .quiet{min-height:44px;font-size:13px;white-space:normal}
+.account-bar .logout-button{background:#412735;border-color:#a45c70;color:#ffe5ea;font-weight:700;padding:10px 16px}
+.account-bar .logout-button:hover{background:#613044}
+@media(max-width:650px){.account-bar{gap:6px;justify-content:center}.account-bar>span{flex-basis:100%;font-size:12px}.account-bar>div{width:100%;justify-content:center;gap:8px}.account-bar .quiet{flex:1;max-width:200px}}
