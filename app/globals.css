@@ -173,3 +173,8 @@ body{font-family:Arial,Helvetica,sans-serif;background:#0a1323;color:#edf3ff;fon
 .is-store .top-actions .return-home span{display:inline;white-space:normal}
 .is-store .top-actions .return-home{min-height:44px;max-width:200px;line-height:1.4}
 @media(max-width:650px){.is-store .top-actions{flex-wrap:wrap;justify-content:center}.is-store .top-actions .return-home{font-size:12px;padding:8px 10px;max-width:170px}.is-store .topbar{justify-content:center}}
+/* Dialogs are mounted at document level above all account controls. */
+.modal-backdrop{z-index:100;overflow:hidden;align-items:center;padding:20px}
+.modal{max-height:calc(100dvh - 40px);min-height:0;overflow-y:auto;overscroll-behavior:contain}
+.modal-close{position:sticky;top:0;right:auto;float:right;z-index:2;min-width:40px;min-height:40px;margin:-8px -8px 0 8px}
+@media(max-width:650px){.modal-backdrop{padding:12px}.modal{max-height:calc(100dvh - 24px);padding:24px 20px}}
