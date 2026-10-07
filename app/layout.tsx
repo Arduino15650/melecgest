@@ -5,8 +5,8 @@ export const metadata: Metadata = {
   title: "MELECGEST — Magasin électrique",
   description: "Gestion du matériel électrique, inventaire et mouvements de stock.",
   icons: {
-    icon: "/favicon.svg",
-    shortcut: "/favicon.svg",
+    icon: "/melecgest-crest.png",
+    shortcut: "/melecgest-crest.png",
   },
 };
 
@@ -21,3 +21,4 @@ export default function RootLayout({
     </html>
   );
 }
+
