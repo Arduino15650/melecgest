@@ -1,9 +1,10 @@
 # MELECGEST
 
-Application française de gestion de matériel électrique. Hébergement Sites privé, base D1 partagée, interface responsive. Aucun fond d’écran photographique n’est intégré.
+Application française de gestion de matériel électrique. Hébergement Sites privé, base D1 partagée, interface responsive. Accueil avec cartes de présentation, écusson transparent et fond de magasin électrique intégré avec l’autorisation de l’utilisateur.
 
 ## Utilisation
 
+- Ouvrir « Accès équipe » pour accéder au magasin. Les cartes Habitat, Tertiaire et Industriel ouvrent directement la catégorie correspondante. Le bouton Accueil permet de revenir à la présentation.
 - Créer les articles avec référence unique, désignation, type, catégorie, fournisseur, unité, emplacement et seuil d’alerte. Aucun catalogue de démonstration n’est injecté en production.
 - Sélectionner un type, une catégorie ou un fournisseur pour afficher les articles, les compteurs et l’historique. La recherche seule ne déclenche pas l’affichage. Effacer les filtres masque tout le contenu sous les filtres.
 - Enregistrer les entrées et les sorties ; les sorties excessives sont refusées, y compris lors de demandes simultanées. Le stock initial constitue une entrée.
